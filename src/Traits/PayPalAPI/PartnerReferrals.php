@@ -45,4 +45,24 @@ trait PartnerReferrals
 
         return $this->doPayPalRequest();
     }
+
+    /**
+     * Show seller status.
+     *
+     * @param string $partnerId
+     * @param string $merchantId
+     *
+     * @return array|\Psr\Http\Message\StreamInterface|string
+     *
+     * @throws \Throwable
+     * @see https://developer.paypal.com/docs/api/partner-referrals/v1/#merchant-integration_status
+     */
+    public function showSellerStatus(string $partnerId, string $merchantId)
+    {
+        $this->apiEndPoint = "v1/customer/partners/{$partnerId}/merchant-integrations/{$merchantId}";
+
+        $this->verb = 'get';
+
+        return $this->doPayPalRequest();
+    }
 }
