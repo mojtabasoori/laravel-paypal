@@ -15,9 +15,9 @@ trait Orders
      *
      * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
      */
-    public function createOrder(array $data)
+    public function createOrder(array $data, string $query)
     {
-        $this->apiEndPoint = 'v2/checkout/orders';
+        $this->apiEndPoint = 'v2/checkout/orders'."?$query";
 
         $this->options['json'] = (object) $data;
 
